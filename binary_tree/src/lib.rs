@@ -19,4 +19,18 @@ mod tests {
         assert!(tree.exists(&24));
         assert!(!tree.exists(&19));
     }
+
+    #[test]
+    fn operations_idempotence() {
+        let mut tree: Tree<u8> = Tree::new();
+
+        tree.insert(120u8);
+        tree.insert(120u8);
+
+        assert!(tree.exists(&120u8));
+
+        tree.destroy(&120u8);
+
+        assert!(!tree.exists(&120u8));
+    }
 }
