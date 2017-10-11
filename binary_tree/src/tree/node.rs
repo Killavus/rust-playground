@@ -18,6 +18,10 @@ impl<T> Node<T>
     }
 
     pub fn insert(&mut self, value: T) {
+        if self.value == value {
+            return;
+        }
+
         let next = if value < self.value {
             &mut self.left
         } else {
@@ -53,6 +57,4 @@ impl<T> Node<T>
             }
         }
     }
-
-    pub fn destroy(&mut self, needle: &T) {}
 }
