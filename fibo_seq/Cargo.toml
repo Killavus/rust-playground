@@ -1,0 +1,6 @@
+[package]
+name = "fibo_seq"
+version = "0.1.0"
+authors = ["Marcin Grzywaczewski <killavus@gmail.com>"]
+
+[dependencies]
