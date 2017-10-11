@@ -1,6 +1,5 @@
 pub struct Node<T>
-where
-    T: PartialOrd,
+    where T: PartialOrd
 {
     value: T,
     left: Option<Box<Node<T>>>,
@@ -8,8 +7,7 @@ where
 }
 
 impl<T> Node<T>
-where
-    T: PartialOrd,
+    where T: PartialOrd
 {
     pub fn new(value: T) -> Node<T> {
         Node {
@@ -38,4 +36,23 @@ where
             }
         }
     }
+
+    pub fn exists(&self, needle: &T) -> bool {
+        if self.value == *needle {
+            true
+        } else {
+            let next = if *needle < self.value {
+                &self.left
+            } else {
+                &self.right
+            };
+
+            match next {
+                &Some(ref next_node) => next_node.exists(needle),
+                &None => false,
+            }
+        }
+    }
+
+    pub fn destroy(&mut self, needle: &T) {}
 }
