@@ -1,13 +1,13 @@
 mod node;
 
 pub struct Tree<T>
-    where T: PartialOrd
+    where T: Ord
 {
     root: Option<node::Node<T>>,
 }
 
 impl<T> Tree<T>
-    where T: PartialOrd
+    where T: Ord
 {
     pub fn new() -> Tree<T> {
         Tree { root: None }
@@ -29,5 +29,9 @@ impl<T> Tree<T>
             Some(ref node) => node.exists(needle),
             None => false,
         }
+    }
+
+    pub fn destroy(&mut self, needle: &T) {
+        if let Some(ref mut root_node) = self.root {}
     }
 }
